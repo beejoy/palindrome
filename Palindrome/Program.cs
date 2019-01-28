@@ -13,17 +13,9 @@ namespace Palindrome
                 Console.Write("Enter a word or 'Q' to quit: ");
                 inputWord = Console.ReadLine().ToLower();
 
-                // remove extraneous characters
-                inputWord = inputWord.Replace(" ", "").Trim();
-
-                // reverse the input string
-                char[] temp = inputWord.ToCharArray();
-                Array.Reverse(temp);
-                string reverseWord = new string(temp);
-
-                if (inputWord != "q")
+                if (inputWord[0] != 'q')
                 {
-                    if (inputWord.Equals(reverseWord))
+                    if (IsPalindrome(inputWord))
                     {
                         Console.WriteLine("The word is a palindrome word.");
                     }
@@ -34,7 +26,22 @@ namespace Palindrome
                     Console.WriteLine();
                 }
 
-            } while (inputWord != "q");
+            } while (inputWord[0] != 'q');
+        }
+
+        private static bool IsPalindrome(string input)
+        {
+            string word = string.Empty;
+
+            // remove whitespaces
+            word = input.Replace(" ", "").Trim();
+
+            // reverse the input string
+            char[] temp = word.ToCharArray();
+            Array.Reverse(temp);
+            string reversedWord = new string(temp);
+
+            return (word.Equals(reversedWord));
         }
     }
 }
