@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 namespace Palindrome
 {
@@ -33,8 +34,10 @@ namespace Palindrome
         {
             string word = string.Empty;
 
-            // remove whitespaces
-            word = input.Replace(" ", "").Trim();
+            // Use regular expression to remove characters other and A-Z, 1-9.
+            String pattern = @"[^a-z1-9]";
+            Regex rgx = new Regex(pattern);
+            word=rgx.Replace(input, "");
 
             // reverse the input string
             char[] temp = word.ToCharArray();
