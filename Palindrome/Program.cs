@@ -8,13 +8,18 @@ namespace Palindrome
         static void Main(string[] args)
         {
             string inputWord = String.Empty;
-
+            bool quitApp = false;
             do
             {
                 Console.Write("Enter a word or 'Q' to quit: ");
                 inputWord = Console.ReadLine().ToLower();
 
-                if (inputWord[0] != 'q')
+                //quitApp = inputWord.Equals("quit") ? true : false;
+
+                if ((inputWord.Length == 1 && inputWord.Equals("q")) || inputWord.Equals("quit"))
+                    quitApp = true;
+
+                if (!quitApp)
                 {
                     if (IsPalindrome(inputWord))
                     {
@@ -27,7 +32,7 @@ namespace Palindrome
                     Console.WriteLine();
                 }
 
-            } while (inputWord[0] != 'q');
+            } while (!quitApp);
         }
 
         private static bool IsPalindrome(string input)
