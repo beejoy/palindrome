@@ -14,8 +14,6 @@ namespace Palindrome
                 Console.Write("Enter a word or 'Q' to quit: ");
                 inputWord = Console.ReadLine().ToLower();
 
-                //quitApp = inputWord.Equals("quit") ? true : false;
-
                 if ((inputWord.Length == 1 && inputWord.Equals("q")) || inputWord.Equals("quit"))
                     quitApp = true;
 
